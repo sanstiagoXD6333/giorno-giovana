@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>camellia</title>
+    <link rel="stylesheet" href="tu papa.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #6f4c3e;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #6f4c3e;
+            text-decoration: none;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .product img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #6f4c3e;
+            color: white;
+        }
+        #carrito {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ventas de Café</h1>
+        <nav>
+            <ul>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#acerca-de">Acerca de</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="productos">
+        <h2>Productos</h2>
+        <div class="product">
+            <img src="cafe-arabica.jpg" alt="Café Arábica">
+            <div>
+                <h3>Café Arábica</h3>
+                <p>Un café suave y afrutado.</p>
+                <button onclick="agregarAlCarrito('Café Arábica')">Agregar al Carrito</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="cafe-robusta.jpg" alt="Café Robusta">
+            <div>
+                <h3>Café Robusta</h3>
+                <p>Un café fuerte y amargo.</p>
+                <button onclick="agregarAlCarrito('Café Robusta')">Agregar al Carrito</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="cafe-sumatra.jpg" alt="Café Sumatra">
+            <div>
+                <h3>Café Sumatra</h3>
+                <p>Un café terroso y con cuerpo.</p>
+                <button onclick="agregarAlCarrito('Café Sumatra')">Agregar al Carrito</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="cafe-colombia.jpg" alt="Café de Colombia">
+            <div>
+                <h3>Café de Colombia</h3>
+                <p>Un café equilibrado y suave.</p>
+                <button onclick="agregarAlCarrito('Café de Colombia')">Agregar al Carrito</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="cafe-etiope.jpg" alt="Café Etíope">
+            <div>
+                <h3>Café Etíope</h3>
+                <p>Un café floral y afrutado.</p>
+                <button onclick="agregarAlCarrito('Café Etíope')">Agregar al Carrito</button>
+            </div>
+        </section>
+
+        <section id="acerca-de">
+            <h2>Acerca de</h2>
+            <p>Nos especializamos en la venta de los mejores cafés del mundo, seleccionados cuidadosamente para brindarte la mejor experiencia.</p>
+        </section>
+    
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <form onsubmit="enviarFormulario(event)">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    
+        <footer>
+            <p>&copy; 2023 Ventas de Café</p>
+        </footer>
+    
+        <script>
+            function agregarAlCarrito(producto) {
+                alert(producto + " ha sido agregado al carrito.");
+            }
+    
+            function enviarFormulario(event) {
+                event.preventDefault();
+                const nombre = document.getElementById('nombre').value;
+                const email = document.getElementById('email').value;
+                alert('Formulario enviado por: ' + nombre + ' (' + email + ')');
+            }
+        </script>
+    </body>
+    </html>
+    
