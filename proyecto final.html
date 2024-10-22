@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>camellia</title>
-    <link rel="stylesheet" href="tu papa.css">
+    <title>Camellia - Ventas de Café</title>
+    <link rel="stylesheet" href="proyacto final.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,6 +55,38 @@
             margin-top: 20px;
             font-weight: bold;
         }
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        #modalContent {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -67,6 +99,7 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
+        <div id="carrito">Productos en el carrito: <span id="carritoCount">0</span></div>
     </header>
 
     <section id="productos">
@@ -77,6 +110,7 @@
                 <h3>Café Arábica</h3>
                 <p>Un café suave y afrutado.</p>
                 <button onclick="agregarAlCarrito('Café Arábica')">Agregar al Carrito</button>
+                <button onclick="mostrarDetalles('Café Arábica', 'Un café suave y afrutado.')">Detalles</button>
             </div>
         </div>
         <div class="product">
@@ -85,65 +119,85 @@
                 <h3>Café Robusta</h3>
                 <p>Un café fuerte y amargo.</p>
                 <button onclick="agregarAlCarrito('Café Robusta')">Agregar al Carrito</button>
+                <button onclick="mostrarDetalles('Café Robusta', 'Un café fuerte y amargo.')">Detalles</button>
             </div>
         </div>
         <div class="product">
             <img src="cafe-sumatra.jpg" alt="Café Sumatra">
             <div>
-                <h3>Café Sumatra</h3>
-                <p>Un café terroso y con cuerpo.</p>
-                <button onclick="agregarAlCarrito('Café Sumatra')">Agregar al Carrito</button>
+                <h3>Encuesta de Satisfacción del Cliente</h3>
+                <form id="encuestaForm">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+            
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+            
+                    <label>¿Cómo calificarías nuestra tienda?</label>
+                    <label><input type="radio" name="calificacion" value="Excelente" required> Excelente</label>
+                    <label><input type="radio" name="calificacion" value="Buena"> Buena</label>
+                    <label><input type="radio" name="calificacion" value="Regular"> Regular</label>
+                    <label><input type="radio" name="calificacion" value="Mala"> Mala</label>
+            
+                    <label for="comentarios">Comentarios:</label>
+                    <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe tus comentarios aquí..."></textarea>
+            
+                    <label><input type="checkbox" id="newsletter" name="newsletter"> Deseo recibir noticias y ofertas especiales.</label>
+            
+                    <button type="submit">Enviar Encuesta</button>
+                </form>
+            
+                <script>
+                    document.getElementById('encuestaForm').addEventListener('submit', function(event) {
+                        event.preventDefault(); // Evita el envío del formulario
+            
+                        // Recopila datos
+                        const nombre = document.getElementById('nombre').value;
+                        const email = document.getElementById('email').value;
+                        const calificacion = document.querySelector('input[name="calificacion"]:checked').value;
+                        const comentarios = document.getElementById('comentarios').value;
+                        const newsletter = document.getElementById('newsletter').checked;
+            
+                        // Aquí puedes enviar los datos a un servidor o procesarlos como desees
+                        console.log("Nombre:", nombre);
+                        console.log("Email:", email);
+                        console.log("Calificación:", calificacion);
+                        console.log("Comentarios:", comentarios);
+                        console.log("Suscribirse a Newsletter:", newsletter);
+            
+                        // Limpiar el formulario
+                        this.reset();
+                        alert('Gracias por tu feedback!');
+                    });
+                </script>  
+                </div>             
+                        <footer>
+                            <p>Contacto: info@camellia.com | Teléfono: +34 123 456 789</p>
+                            <p>Síguenos en nuestras redes sociales:</p>
+                            <a href="https://www.facebook.com" target="_blank">Facebook</a> |
+                            <a href="https://www.instagram.com" target="_blank">Instagram</a> |
+                            <a href="https://www.twitter.com" target="_blank">Twitter</a>
+                            <p>&copy; 2023 Camellia - Todos los derechos reservados.</p>
+                        </footer>
+                <style>
+                    footer {
+                        text-align: center;
+                        padding: 20px;
+                        background: #6f4c3e;
+                        color: white;
+                        position: relative;
+                        bottom: 0;
+                        width: 100%;
+                    }
+                    footer a {
+                        color: white;
+                        text-decoration: none;
+                    }
+                    footer a:hover {
+                        text-decoration: underline;
+                    }
+                </style>
             </div>
-        </div>
-        <div class="product">
-            <img src="cafe-colombia.jpg" alt="Café de Colombia">
-            <div>
-                <h3>Café de Colombia</h3>
-                <p>Un café equilibrado y suave.</p>
-                <button onclick="agregarAlCarrito('Café de Colombia')">Agregar al Carrito</button>
-            </div>
-        </div>
-        <div class="product">
-            <img src="cafe-etiope.jpg" alt="Café Etíope">
-            <div>
-                <h3>Café Etíope</h3>
-                <p>Un café floral y afrutado.</p>
-                <button onclick="agregarAlCarrito('Café Etíope')">Agregar al Carrito</button>
-            </div>
-        </section>
-
-        <section id="acerca-de">
-            <h2>Acerca de</h2>
-            <p>Nos especializamos en la venta de los mejores cafés del mundo, seleccionados cuidadosamente para brindarte la mejor experiencia.</p>
-        </section>
-    
-        <section id="contacto">
-            <h2>Contacto</h2>
-            <form onsubmit="enviarFormulario(event)">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-    
-        <footer>
-            <p>&copy; 2023 Ventas de Café</p>
-        </footer>
-    
-        <script>
-            function agregarAlCarrito(producto) {
-                alert(producto + " ha sido agregado al carrito.");
-            }
-    
-            function enviarFormulario(event) {
-                event.preventDefault();
-                const nombre = document.getElementById('nombre').value;
-                const email = document.getElementById('email').value;
-                alert('Formulario enviado por: ' + nombre + ' (' + email + ')');
-            }
-        </script>
-    </body>
-    </html>
-    
+                </footer>
+            </body>
+</html>
