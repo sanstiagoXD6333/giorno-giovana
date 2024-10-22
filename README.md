@@ -1,5 +1,4 @@
-﻿# giorno-giovana
-<!DOCTYPE html>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -201,6 +200,3 @@
                     }
                 </style>
             </div>
-            
-    </body>
-</html>
